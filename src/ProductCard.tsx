@@ -6,17 +6,20 @@ interface Product {
   name: string;
   price: string;
   image: string;
+  description: string;
+  features: string[];
 }
 
 interface ProductCardProps {
   product: Product;
+  onClick: () => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
   const { theme } = useTheme();
 
   return (
-    <div className={`product-card ${theme}`}>
+    <div className={`product-card ${theme}`} onClick={onClick}>
       <img src={product.image} alt={product.name} className="product-image" />
       <div className="product-info">
         <h3 className="product-name">{product.name}</h3>
